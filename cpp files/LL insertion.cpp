@@ -50,15 +50,9 @@ node *head=NULL;
  }
  
 int main() {
-	// your code goes here
-	
-//	cin>>t;
-//	while(t--)
-//	{
-//	cin>>n;
-	insertBegin(2);
-	insertEnd(3);
-	display();
-//	}
+// your code goes here
+  insertBegin(2);
+  insertEnd(3);
+  display();
 	return 0;
 }
