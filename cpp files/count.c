@@ -32,6 +32,7 @@ int main(void) {
 		r=n%10;
 		if(r%2==0)
 		{
+			
 			p++;
 		}
 		else{ q++;}
