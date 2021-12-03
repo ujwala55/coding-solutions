@@ -1,0 +1,13 @@
+#include <bits/stdc++.h>
+#define f(n) for(int i=0;i<n;i++) cin>>a[i]
+using namespace std;
+
+int main() {
+	// your code goes here
+	int a[10],n,k;
+	cin>>n>>k;
+	f(n);
+	sort(a,a+n);
+	cout<<"the minimum is :"<<a[k-1]<<endl;
+	cout<<"the maximum is :"<<a[n-k];
+	return 0;
