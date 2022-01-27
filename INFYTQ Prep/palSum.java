@@ -1,4 +1,6 @@
 //infosys prev question
+/*for a given positive number identify a palindrome formed by performing the following operations:
+add num and reverse and repeat the process until a palindrome is obtained*/
 import java.util.*;
 import java.lang.*;
 import java.io.*;
