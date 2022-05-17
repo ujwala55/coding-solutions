@@ -159,4 +159,157 @@ class Node{
        
     }
 }
-    
+--------------------------------------------------------------------------------------------------------
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Ideone
+{
+  class Node{
+    int data;
+    Node next;
+    public Node(int data)
+    {
+        this.data=data;
+        this.next=null;
+    }
+    }
+    Node start=null;
+    Node ptr=null;
+    //insertion operations
+    public  void createList(int data)
+    {
+          Node newnode=new Node(data);
+          if(start==null)
+          {
+              start=newnode;
+          }
+          else{
+               ptr=start;
+            while(ptr.next!=null)
+            {
+                ptr=ptr.next;
+            }
+              ptr.next=newnode;
+          }
+    }
+    public int findLength(Node head)
+    {
+      Node ptr=head;
+      int count=0;
+      while(ptr!=null)
+      {
+        ptr=ptr.next;
+        count++;
+      }
+      return count;
+    }
+    public void findMidElement()
+    {
+      Node slow=start;
+      Node fast=start;
+      while(fast!=null && fast.next!=null)
+      {
+        slow=slow.next;
+        fast=fast.next.next;
+      }
+      System.out.println(slow.data);
+      // return slow;
+    }
+    public void nthNodeFromLast(Node head)
+    {
+      // Scanner s=new Scanner(System.in);  
+      int n=2;
+      int length=findLength(head);
+         int k=(length-n)+1;
+      int count=1;
+      Node ptr=head;
+      while(count!=k)
+      {
+        ptr=ptr.next;
+        count++;
+      }
+      System.out.println(ptr.data);
+    }
+    public boolean detectCycle(Node head)
+    {
+      Node slow=head;
+      Node fast=head;
+      while(fast!=null && fast.next!=null)
+      {
+        slow=slow.next;
+        fast=fast.next.next;
+        if(slow==fast)
+        return true;
+      }
+      return false;
+    }
+    // public boolean isPalindrome(Node head)
+    // {
+    //   if(head==null || head.next==null)
+    //   {
+    //     return true;
+    //   }
+    //   Node middle=findMidElement();
+    //   Node secondHalfStart=reverse(middle.next);
+    //   Node firstHalfStart=head;
+    //   while(secondHalfStart!=null)
+    //   {
+    //     if(firstHalfStart!=secondHalfStart)
+    //     {
+    //     return false;
+    //     }
+    //     firstHalfStart=firstHalfStart.next;
+    //     secondHalfStart=secondHalfStart.next;
+    //   }
+    //   return true;
+    // }
+    public Node reverse(Node head)
+    {
+      Node current=head;
+      Node next=null;
+      Node prev=null;
+      while(current!=null)
+      {
+        next=current.next;
+        current.next=prev;
+        prev=current;
+        current=next;
+       }
+       return prev;
+    }
+    public void display()
+    {
+        Node node=start;
+            while(node.next!=null)
+            {
+                System.out.print(node.data+" ");
+                node=node.next;
+            }
+            System.out.println(node.data);
+    }
+  public static void main (String[] args) throws java.lang.Exception
+  {
+    // your code goes here
+    Ideone list=new Ideone();
+    list.createList(1);
+    list.createList(2);
+    list.createList(3);
+    list.createList(4);
+    list.createList(6);
+    list.createList(7);
+    list.createList(8);
+    list.display();
+    System.out.println(list.findLength(list.start));
+    list.findMidElement();
+    list.nthNodeFromLast(list.start);
+    list.start.next.next.next.next.next.next=list.start;
+    if(list.detectCycle(list.start))
+    {
+      System.out.println("cycle exists");
+    }else
+    System.out.println("No cycle exists");
+  }
+}
