@@ -159,7 +159,7 @@ class Node{
        
     }
 }
---------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 import java.util.*;
 import java.lang.*;
@@ -312,4 +312,81 @@ class Ideone
     }else
     System.out.println("No cycle exists");
   }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Ideone
+{
+	class Node{
+    int data;
+    Node next;
+    public Node(int data)
+    {
+        this.data=data;
+        this.next=null;
+    }
+    }
+    Node start=null;
+    Node ptr=null;
+    //insertion operations
+    public  void insertIntoList(int data)
+    {
+          Node newnode=new Node(data);
+          if(start==null)
+          {
+              start=newnode;
+          }
+          else{
+               ptr=start;
+            while(ptr.next!=null)
+            {
+                ptr=ptr.next;
+            }
+              ptr.next=newnode;
+          }
+    }
+    public void removeDuplicates(Node head)
+    {
+    	Node ptr=head;
+    	Node current=null;
+    	Node temp=null;
+    	while(ptr!=null && ptr.next!=null)
+    	{
+    		current=ptr.next;
+    		temp=ptr;
+    		while(current!=null && current.next!=null)
+    		{
+    			if(ptr.data == current.data)
+    			{
+    				temp.next=current.next;
+    				current=temp.next;
+    			}
+    		    current=current.next;
+    			temp=temp.next;
+    		}	
+    		ptr=ptr.next;
+    	}
+    	Node node=head;
+        while(node.next!=null)
+            {
+                System.out.print(node.data+" ");
+                node=node.next;
+            }
+            System.out.println(node.data);
+    }
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Ideone list=new Ideone();
+		list.insertIntoList(1);
+		list.insertIntoList(2);
+		list.insertIntoList(3);
+		list.insertIntoList(2);
+		list.insertIntoList(3);
+		list.insertIntoList(5);
+		list.removeDuplicates(list.start);
+	}
 }
