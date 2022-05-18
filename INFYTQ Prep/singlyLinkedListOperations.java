@@ -390,3 +390,93 @@ class Ideone
 		list.removeDuplicates(list.start);
 	}
 }
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Ideone
+{
+	class Node{
+		int data;
+		Node next;
+		Node(int data){
+			this.data=data;
+			this.next=null;
+		}
+	}
+	Node head=null;
+	Node ptr=null;
+	 public  Node createList(int data)
+    {
+          Node newnode=new Node(data);
+          if(head==null)
+          {
+              head=newnode;
+          }
+          else{
+               ptr=head;
+            while(ptr.next!=null)
+            {
+                ptr=ptr.next;
+            }
+              ptr.next=newnode;
+          }
+          return head;
+    }
+    public void  sumOfLists(Node Fhead, Node Shead)
+    {
+    	Node f=Fhead;
+    	Node s=Shead;
+    	while(f!=null && s!=null )
+    	{
+    		int val=f.data + s.data;
+    		System.out.print(val+"-> ");
+    		f=f.next;
+    		s=s.next;
+    	}
+    	while(f!=null)
+    	{
+    		System.out.print(f.data+"-> ");
+    		f=f.next;
+    	}
+    	while(s!=null)
+    	{
+    		System.out.print(s.data+"-> ");
+    		s=s.next;
+    	}
+    	System.out.print("null");
+    }
+     public void display()
+    {
+        Node node=head;
+            while(node.next!=null)
+            {
+                System.out.print(node.data+"-> ");
+                node=node.next;
+            }
+            System.out.println(node.data);
+    }
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Ideone FL=new Ideone();
+		Ideone SL=new Ideone();
+		Ideone TL=new Ideone();
+		
+		//first list creation
+		FL.createList(1);
+		FL.createList(2);
+		FL.createList(3);
+		FL.createList(4);
+		FL.display();
+		//second list creation
+		SL.createList(4);
+		SL.createList(5);
+		SL.createList(6);
+		SL.display();
+		//final list display
+		TL.sumOfLists(FL.head,SL.head);
+
+	}
+}
