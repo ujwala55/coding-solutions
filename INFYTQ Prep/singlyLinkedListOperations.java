@@ -480,3 +480,96 @@ class Ideone
 
 	}
 }
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+public class Main
+{
+	class Node{
+		int data;
+	    Node next;
+		Node(int data){
+			this.data=data;
+			this.next=null;
+	    }
+	}
+	Node head=null;
+	Node ptr=null;
+	 public  Node createList(int data)
+    {
+          Node newnode=new Node(data);
+          if(head==null)
+          {
+              head=newnode;
+          }
+          else{
+               ptr=head;
+            while(ptr.next!=null)
+            {
+                ptr=ptr.next;
+            }
+              ptr.next=newnode;
+          }
+          return head;
+    }
+    public static Main sumOfLists(Node Fhead, Node Shead)
+    {
+    	Node f=Fhead;
+    	Node s=Shead;
+    	Main ans=new Main();
+    	while(f!=null && s!=null )
+    	{
+    		int val=f.data + s.data;
+    		ans.createList(val);
+    		f=f.next;
+    		s=s.next;
+    	}
+    	while(f!=null)
+        {
+    		ans.createList(f.data);
+    		f=f.next;
+    	}
+    	while(s!=null)
+    	{
+    		ans.createList(s.data);
+    		s=s.next;
+    	}
+    	return ans;
+    }
+     public void display()
+    {
+        Node node=head;
+            while(node.next!=null)
+            {
+                System.out.print(node.data+"-> ");
+                node=node.next;
+            }
+            System.out.println(node.data);
+    }
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Main FL=new Main();
+		Main SL=new Main();
+		// Main TL=new Main();
+		
+		//first list creation
+		FL.createList(1);
+		FL.createList(2);
+		FL.createList(3);
+		FL.createList(4);
+		FL.display();
+		//second list creation
+		SL.createList(4);
+		SL.createList(5);
+		SL.createList(6);
+		SL.display();
+		//final list display
+	    Main TL=sumOfLists(FL.head,SL.head);
+		TL.display();
+
+	}
+}
