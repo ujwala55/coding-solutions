@@ -357,12 +357,15 @@ class Ideone
     	{
     		current=ptr.next;
     		temp=ptr;
-    		while(current!=null && current.next!=null)
+    		while(current!=null)
     		{
     			if(ptr.data == current.data)
     			{
+			if (current.next == null) {
+                        temp.next = null;}
+				else{
     				temp.next=current.next;
-    				current=temp.next;
+    				current=temp.next;}
     			}
     		    current=current.next;
     			temp=temp.next;
