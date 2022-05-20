@@ -141,3 +141,42 @@ class Main {
 		System.out.print(s.size() +" ");
 	}
 }
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+import java.util.*;
+class Main {
+	public static void insertAtBottom(Stack<Integer> s, int ele)
+	{
+		if(s.isEmpty())
+		{
+			s.push(ele);
+			return;
+		}
+	   int topele=s.pop();
+	   insertAtBottom(s,ele);
+	   s.push(topele);
+	}
+	public static void reverse(Stack<Integer> s)
+	{
+       if(s.isEmpty())
+	   {
+		   return;
+	   } 
+	   int ele=s.pop();
+	   reverse(s);
+	   insertAtBottom(s,ele);
+	}
+	public static void main(String args[]) {
+		// Your code goes here
+	Stack<Integer> s=new Stack<>();
+	s.push(1);
+	s.push(2);
+	s.push(3);
+	insertAtBottom(s,7);
+    reverse(s);
+	while(!s.isEmpty())
+	{
+		System.out.print(s.peek()+" ");
+		s.pop();
+	}
+	}
+}
